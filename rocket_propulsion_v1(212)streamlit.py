@@ -35,14 +35,14 @@ st.subheader("Enter Engine Parameters")
 fuel_type = st.selectbox("Fuel Type", ['LH2', 'RP1', 'CH4', 'NH3'])
 oxidizer_type = st.selectbox("Oxidizer Type", ['LOX', 'N2O4', 'H2O2'])
 
-chamber_pressure_bar = st.number_input("Chamber Pressure (bar)", min_value=0.0)
-oxidizer_fuel_ratio = st.number_input("Oxidizer–Fuel Ratio", min_value=0.0)
-combustion_temperature_K = st.number_input("Combustion Temperature (K)", min_value=0.0)
-heat_capacity_ratio = st.number_input("Heat Capacity Ratio", min_value=1.0)
-nozzle_expansion_ratio = st.number_input("Nozzle Expansion Ratio", min_value=0.0)
-ambient_pressure_bar = st.number_input("Ambient Pressure (bar)", min_value=0.0)
-specific_impulse_s = st.number_input("Specific Impulse (s)", min_value=0.0)
-combustion_stability_margin = st.number_input("Combustion Stability Margin", min_value=0.0)
+chamber_pressure_bar = st.number_input("Chamber Pressure (bar)", min_value=20, max_value=250)
+oxidizer_fuel_ratio = st.number_input("Oxidizer–Fuel Ratio", min_value=1, max_value=8)
+combustion_temperature_K = st.number_input("Combustion Temperature (K)", min_value=1081, max_value=3719)
+heat_capacity_ratio = st.number_input("Heat Capacity Ratio", min_value=1, max_value=2)
+nozzle_expansion_ratio = st.number_input("Nozzle Expansion Ratio", min_value=5, max_value=150)
+ambient_pressure_bar = st.number_input("Ambient Pressure (bar)", min_value=0, max_value=1)
+specific_impulse_s = st.number_input("Specific Impulse (s)", min_value=167, max_value=474)
+combustion_stability_margin = st.number_input("Combustion Stability Margin", min_value=-2, max_value=1)
 
 # ---------------------------------
 # Create input DataFrame
@@ -84,3 +84,4 @@ if st.button("Predict Physics Violation"):
         st.error(f"⚠️ Physics Violation Detected\nProbability: {probability:.2f}")
     else:
         st.success(f"✅ No Physics Violation\nProbability: {probability:.2f}")
+
